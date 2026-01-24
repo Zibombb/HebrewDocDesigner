@@ -97,8 +97,7 @@ env/
 # Data files (exclude real patient data, keep examples)
 data/*.json
 !data/example_*.json
-output/*.json
-output/*.csv
+output/
 reports/*.pdf
 reports/*.xlsx
 
