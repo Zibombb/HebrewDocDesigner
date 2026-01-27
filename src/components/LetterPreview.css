@@ -1,0 +1,185 @@
+.letter-preview-container {
+  background-color: var(--surface);
+  border-radius: 1rem;
+  padding: 1.5rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.letter-preview-empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 4rem 2rem;
+  text-align: center;
+  color: var(--text-secondary);
+}
+
+.empty-icon {
+  font-size: 4rem;
+  margin-bottom: 1rem;
+  opacity: 0.5;
+}
+
+.letter-preview-empty h3 {
+  font-size: 1.25rem;
+  color: var(--text-primary);
+  margin-bottom: 0.5rem;
+}
+
+.letter-preview-empty p {
+  font-size: 0.875rem;
+}
+
+.preview-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+  padding-bottom: 1rem;
+  border-bottom: 2px solid var(--primary-color);
+}
+
+.preview-title {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.preview-actions {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.btn-icon {
+  font-size: 1rem;
+}
+
+.custom-content-section {
+  margin-bottom: 1.5rem;
+  padding: 1rem;
+  background-color: var(--background);
+  border-radius: 0.5rem;
+}
+
+.letter-preview {
+  background-color: white;
+  border: 1px solid var(--border-color);
+  border-radius: 0.5rem;
+  padding: 3rem;
+  font-family: var(--font-document);
+  line-height: 1.8;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  min-height: 600px;
+}
+
+.letter-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 2rem;
+  padding-bottom: 1rem;
+  border-bottom: 2px solid #333;
+}
+
+.clinic-info {
+  text-align: right;
+}
+
+.clinic-name {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #1a365d;
+  margin-bottom: 0.25rem;
+}
+
+.clinic-info p {
+  font-size: 0.9rem;
+  color: #4a5568;
+  margin: 0.125rem 0;
+}
+
+.letter-date {
+  font-size: 1rem;
+  color: #4a5568;
+  text-align: left;
+}
+
+.letter-content {
+  white-space: pre-wrap;
+  font-size: 1rem;
+  color: #1a202c;
+}
+
+.letter-content p {
+  margin: 0;
+  min-height: 1.8em;
+}
+
+.letter-content p.empty-line {
+  min-height: 0.9em;
+}
+
+.letter-footer {
+  margin-top: 3rem;
+  padding-top: 2rem;
+}
+
+.signature-area {
+  width: 200px;
+}
+
+.signature-line {
+  border-bottom: 1px solid #333;
+  margin-bottom: 0.5rem;
+  height: 60px;
+}
+
+.signature-area p {
+  font-size: 0.875rem;
+  color: #4a5568;
+  text-align: center;
+}
+
+@media print {
+  .letter-preview-container {
+    padding: 0;
+    box-shadow: none;
+    background: none;
+  }
+
+  .letter-preview {
+    border: none;
+    box-shadow: none;
+    padding: 1cm;
+    min-height: auto;
+  }
+
+  .letter-header {
+    border-bottom-color: #000;
+  }
+
+  .clinic-name {
+    color: #000;
+  }
+}
+
+@media (max-width: 768px) {
+  .letter-preview {
+    padding: 1.5rem;
+  }
+
+  .preview-header {
+    flex-direction: column;
+    gap: 1rem;
+    align-items: stretch;
+  }
+
+  .preview-actions {
+    justify-content: stretch;
+  }
+
+  .preview-actions .btn {
+    flex: 1;
+  }
+}

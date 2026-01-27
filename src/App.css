@@ -1,0 +1,146 @@
+.app {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Header */
+.app-header {
+  background: linear-gradient(135deg, #1e40af 0%, #3b82f6 100%);
+  color: white;
+  padding: 1.5rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+.header-content {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.app-title {
+  font-size: 1.75rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.title-icon {
+  font-size: 2rem;
+}
+
+.app-subtitle {
+  font-size: 0.9rem;
+  opacity: 0.9;
+  margin-right: 2.75rem;
+}
+
+.app-header .btn-secondary {
+  background-color: rgba(255, 255, 255, 0.15);
+  color: white;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.app-header .btn-secondary:hover {
+  background-color: rgba(255, 255, 255, 0.25);
+}
+
+/* Main Content */
+.app-main {
+  flex: 1;
+  padding: 2rem;
+  background-color: var(--background);
+}
+
+.app-layout {
+  display: grid;
+  grid-template-columns: 450px 1fr;
+  gap: 2rem;
+  max-width: 1600px;
+  margin: 0 auto;
+}
+
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.main-content {
+  position: sticky;
+  top: 2rem;
+  height: fit-content;
+}
+
+/* Footer */
+.app-footer {
+  background-color: #1e293b;
+  color: #94a3b8;
+  padding: 1rem 2rem;
+  text-align: center;
+  font-size: 0.875rem;
+}
+
+/* Responsive */
+@media (max-width: 1200px) {
+  .app-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .main-content {
+    position: static;
+    order: -1;
+  }
+}
+
+@media (max-width: 768px) {
+  .app-header {
+    flex-direction: column;
+    gap: 1rem;
+    text-align: center;
+    padding: 1rem;
+  }
+
+  .app-title {
+    font-size: 1.25rem;
+    justify-content: center;
+  }
+
+  .app-subtitle {
+    margin-right: 0;
+  }
+
+  .app-main {
+    padding: 1rem;
+  }
+
+  .sidebar {
+    gap: 1rem;
+  }
+}
+
+/* Print Styles */
+@media print {
+  .app-header,
+  .app-footer,
+  .sidebar {
+    display: none;
+  }
+
+  .app-main {
+    padding: 0;
+    background: none;
+  }
+
+  .app-layout {
+    display: block;
+  }
+
+  .main-content {
+    width: 100%;
+  }
+}
