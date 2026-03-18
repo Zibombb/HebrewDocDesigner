@@ -9,6 +9,8 @@ import anthropic
 from backend.config import ANTHROPIC_API_KEY, MODEL, CONTENT_SOURCES_PATH, MAX_CHUNK_SIZE
 from backend.models.schemas import ContentChunk, ContentSource
 from backend.services import vector_store
+from backend.services.knowledge_decomposer import decompose_chunk
+from backend.services.conflict_resolver import process_new_atom
 
 client = anthropic.AsyncAnthropic(api_key=ANTHROPIC_API_KEY)
 
@@ -130,6 +132,14 @@ async def process_file(filename: str, content: bytes) -> ContentSource:
 
     if all_chunks:
         vector_store.add_chunks(all_chunks)
+        # Phase 2: decompose each chunk into knowledge atoms and run conflict resolution
+        for chunk in all_chunks:
+            try:
+                atoms = await decompose_chunk(chunk)
+                for atom in atoms:
+                    await process_new_atom(atom)
+            except Exception:
+                pass  # Knowledge decomposition is additive — never block indexing
 
     source = ContentSource(
         id=source_id,

@@ -1,5 +1,48 @@
 from pydantic import BaseModel
 from typing import List, Optional, Dict, Any
+from enum import Enum
+
+
+class KnowledgeAtomType(str, Enum):
+    CONCEPT = "concept"                    # מושג / הגדרה
+    CLINICAL_INSIGHT = "clinical_insight"  # תובנה קלינית
+    THINKING_PRINCIPLE = "thinking_principle"  # עקרון חשיבה
+    MANAGEMENT_RULE = "management_rule"    # כלל ניהולי / פרוטוקול
+    MEDICATION = "medication"              # תרופה
+    PATHOGEN = "pathogen"                  # נגיף / חיידק / פרזיט
+    APPROACH = "approach"                  # גישה טיפולית / אסטרטגיה
+    TOPIC = "topic"                        # נושא כללי
+    OTHER = "other"                        # אחר
+
+
+class AtomStatus(str, Enum):
+    ACTIVE = "active"
+    CONFLICTED = "conflicted"
+    SUPERSEDED = "superseded"
+
+
+class KnowledgeAtom(BaseModel):
+    id: str
+    content: str                          # The granular knowledge statement
+    atom_type: KnowledgeAtomType
+    tags: List[str]
+    source_chunks: List[str]              # ContentChunk IDs this came from
+    source_names: List[str]               # Document names
+    confidence: float = 1.0              # Increases when reinforced (max 2.0)
+    status: AtomStatus = AtomStatus.ACTIVE
+    related_to: List[str] = []           # IDs of related atoms
+    conflicts_with: List[str] = []       # IDs of conflicting atoms
+    superseded_by: Optional[str] = None
+    created_at: str
+    updated_at: str
+    version: int = 1
+
+
+class AtomProcessingResult(BaseModel):
+    action: str  # ADD / REINFORCE / UPDATE / CONFLICT / PARALLEL
+    atom_id: str
+    affected_atom_id: Optional[str] = None
+    message: str
 
 
 class VoiceProfile(BaseModel):

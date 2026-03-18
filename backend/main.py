@@ -3,7 +3,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from fastapi.staticfiles import StaticFiles
 from pathlib import Path
 
-from backend.api.routes import voice, content, book
+from backend.api.routes import voice, content, book, knowledge
 
 app = FastAPI(title="Hebrew Book Writer", version="1.0.0")
 
@@ -18,6 +18,7 @@ app.add_middleware(
 app.include_router(voice.router, prefix="/api")
 app.include_router(content.router, prefix="/api")
 app.include_router(book.router, prefix="/api")
+app.include_router(knowledge.router, prefix="/api")
 
 
 @app.get("/api/health")
