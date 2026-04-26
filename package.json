@@ -12,7 +12,12 @@
     "type": "git",
     "url": "http://local_proxy@127.0.0.1:20758/git/Zibombb/HebrewDocDesigner"
   },
-  "keywords": ["hebrew", "rtl", "documents", "patient-letters"],
+  "keywords": [
+    "hebrew",
+    "rtl",
+    "documents",
+    "patient-letters"
+  ],
   "author": "",
   "license": "ISC",
   "dependencies": {
@@ -24,6 +29,7 @@
     "@types/react-dom": "^19.2.3",
     "@vitejs/plugin-react": "^5.1.2",
     "typescript": "^5.9.3",
-    "vite": "^7.3.1"
+    "vite": "^7.3.1",
+    "vite-plugin-singlefile": "^2.3.3"
   }
 }
